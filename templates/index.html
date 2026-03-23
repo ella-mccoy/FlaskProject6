@@ -2,30 +2,98 @@
 <html>
 <head>
     <title>Recipe Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 280px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 10px 14px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .meal-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .meal-img {
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .intro {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
 
     <h1>🍝 Recipe Finder</h1>
+    <p class="intro">Search for a recipe and view its details.</p>
 
     <form method="POST">
         <input type="text" name="meal" placeholder="Search for a recipe..." value="{{ query }}">
         <button type="submit">Search</button>
     </form>
 
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
     {% if meals %}
         {% for meal in meals %}
-            <div style="margin-top:20px; border:1px solid #ccc; padding:10px;">
-                <h2>{{ meal.strMeal }}</h2>
-                <img src="{{ meal.strMealThumb }}" width="200">
+            <div class="card">
+                <div class="meal-title">{{ meal.strMeal }}</div>
+                <img class="meal-img" src="{{ meal.strMealThumb }}" width="250" alt="{{ meal.strMeal }}">
 
                 <p><strong>Category:</strong> {{ meal.strCategory }}</p>
                 <p><strong>Area:</strong> {{ meal.strArea }}</p>
-
-                <p>{{ meal.strInstructions[:200] }}...</p>
+                <p><strong>Main Ingredient:</strong> {{ meal.strIngredient1 }}</p>
+                <p>{{ meal.strInstructions[:250] }}...</p>
             </div>
         {% endfor %}
-    {% elif query %}
-        <p>No recipes found for "{{ query }}"</p>
+    {% elif query and not error %}
+        <p>No recipes found for "{{ query }}".</p>
     {% endif %}
 
 </body>
