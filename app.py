@@ -21,7 +21,8 @@ def home():
                 data = response.json()
                 meals = data.get("meals")
             except requests.RequestException:
-                error = "Could not connect to the recipe service. Please try again."
+                error = "Unable to fetch recipes right now. Please try again later."
+
 
     return render_template("index.html", meals=meals, query=query, error=error)
 
