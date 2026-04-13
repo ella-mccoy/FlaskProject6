@@ -2,3 +2,5 @@ flask
 psycopg[binary]
 requests
 python-dotenv
+psycopg[binary]
+python-dotenv
