@@ -9,12 +9,16 @@
             background-color: #f4f4f4;
         }
 
-        h1 {
+        h1, h2 {
             color: #333;
         }
 
+        .intro {
+            color: #555;
+        }
+
         form {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         input[type="text"] {
@@ -27,14 +31,14 @@
         button {
             padding: 10px 14px;
             border: none;
-            background-color: #333;
+            background-color: #4CAF50;
             color: white;
             border-radius: 6px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #555;
+            background-color: #45a049;
         }
 
         .card {
@@ -42,13 +46,7 @@
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .meal-title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
         .meal-img {
@@ -56,20 +54,24 @@
             margin-bottom: 10px;
         }
 
+        .saved-box {
+            background: white;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
         .error {
             color: red;
             font-weight: bold;
-        }
-
-        .intro {
-            color: #555;
         }
     </style>
 </head>
 <body>
 
     <h1>🍝 Recipe Finder</h1>
-    <p class="intro">Search for recipes from around the world and explore ingredients and instructions.</p>
+    <p class="intro">Search for recipes and save your favourites.</p>
 
     <form method="POST">
         <input type="text" name="meal" placeholder="Search for a recipe..." value="{{ query }}">
@@ -83,18 +85,37 @@
     {% if meals %}
         {% for meal in meals %}
             <div class="card">
-                <div class="meal-title">{{ meal.strMeal }}</div>
+                <h2>{{ meal.strMeal }}</h2>
                 <img class="meal-img" src="{{ meal.strMealThumb }}" width="250" alt="{{ meal.strMeal }}">
 
                 <p><strong>Category:</strong> {{ meal.strCategory }}</p>
                 <p><strong>Area:</strong> {{ meal.strArea }}</p>
                 <p><strong>Main Ingredient:</strong> {{ meal.strIngredient1 }}</p>
                 <p>{{ meal.strInstructions[:250] }}...</p>
+
+                <form action="/save" method="POST">
+                    <input type="hidden" name="name" value="{{ meal.strMeal }}">
+                    <button type="submit">Save Recipe</button>
+                </form>
             </div>
         {% endfor %}
     {% elif query and not error %}
         <p>No recipes found for "{{ query }}".</p>
     {% endif %}
+
+    <div class="saved-box">
+        <h2>Saved Recipes</h2>
+
+        {% if saved_recipes %}
+            <ul>
+                {% for recipe in saved_recipes %}
+                    <li>{{ recipe }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No saved recipes yet.</p>
+        {% endif %}
+    </div>
 
 </body>
 </html>
