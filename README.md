@@ -40,3 +40,4 @@ DATABASE_URL=your_database_connection_string
 ## Notes
 .env is not uploaded to GitHub for security
 Each user must create their own .env file
+This project was deployed using Render.
