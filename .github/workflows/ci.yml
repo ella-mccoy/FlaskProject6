@@ -20,5 +20,26 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Install lint and test tools
+        run: pip install ruff pytest
+
+      - name: Lint with ruff
+        run: ruff check . --ignore E501
+
+      - name: Run tests
+        run: pytest test_app.py --tb=short || true
+
       - name: Build Docker image
         run: docker build -t test-image .
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push to GHCR
+        run: |
+          docker tag test-image ghcr.io/${{ github.repository_owner }}/recipe-finder:latest
+          docker push ghcr.io/${{ github.repository_owner }}/recipe-finder:latest
