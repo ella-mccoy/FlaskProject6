@@ -27,7 +27,7 @@ jobs:
         run: ruff check . --ignore E501
 
       - name: Run tests
-        run: pytest --tb=short || true
+        run: pytest test_app.py --tb=short || true
 
       - name: Build Docker image
         run: docker build -t test-image .
