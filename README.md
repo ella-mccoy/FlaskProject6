@@ -3,6 +3,8 @@ A web application that allows users to search for recipes, save their favourites
 The project combines a live web app, database integration, and deployment.
 ## Live Demo
 https://flaskproject6.onrender.com
+## GitHub URL Acess
+https://github.com/ella-mccoy/FlaskProject6
 ## Features
 Search for recipes
 Save recipes to a database
