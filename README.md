@@ -25,7 +25,10 @@ Render (deployment)
 ## Notes
 The application is fully deployed on Render  
 The database is hosted on Supabase  
-No setup is required — simply use the live link  
+No setup is required — simply use the live link
+
+## Release
+Version 1.0.0 was published on GitHub after deployment.
 
 ## Team Members
 Ella McCoy 124307196  
@@ -33,4 +36,3 @@ Maggie O'Brien 124307173
 Seán Harrington 124416512  
 Mia Cronin 124339831  
 
-Built as part of a group software engineering project.
