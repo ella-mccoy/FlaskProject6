@@ -1,6 +1,7 @@
 # Recipe Finder
 
 A web application that allows users to search for recipes, save their favourites, and view them anytime.
+The project combines a live web app, database integration, and deployment.
 
 ## Live Demo
 https://flaskproject6.onrender.com
