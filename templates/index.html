@@ -71,10 +71,10 @@
 <body>
 
     <h1>🍝 Recipe Finder</h1>
-    <p class="intro">Search for recipes, save your favourites, and view them anytime.</p>
+    <p class="intro">Search for recipes, save your favourite meals, and view them anytime.</p>
 
     <form method="POST">
-        <input type="text" name="meal" placeholder="Search for a recipe..." value="{{ query }}">
+        <input type="text" name="meal" placeholder="Search for recipes..." value="{{ query }}">
         <button type="submit">Search</button>
     </form>
 
@@ -104,7 +104,7 @@
     {% endif %}
 
     <div class="saved-box">
-        <h2>Saved Recipes</h2>
+        <h2>Saved Recipes List</h2>
 
         {% if saved_recipes %}
             <ul>
