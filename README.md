@@ -1,43 +1,36 @@
-# Recipe Finder App
+# Recipe Finder
 
-## Description
-This is a Flask web app that lets users search for recipes and save their favourites using a database.
+A web application that allows users to search for recipes, save their favourites, and view them anytime.
+
+## Live Demo
+https://flaskproject6.onrender.com
 
 ## Features
-Search recipes using TheMealDB API
-View ingredients and instructions
-Save recipes to database
-View saved recipes
-Docker support
-CI/CD with GitHub Actions
+Search for recipes
+Save recipes to a database
+View saved recipes anytime
 
-## Tech Stack
+## Technologies Used
 Python (Flask)
+PostgreSQL (Supabase)
 Docker
-Supabase (PostgreSQL)
-GitHub Actions
-HTML/CSS
+Render (deployment)
 
-## How to Run
-
-docker build -t flaskproject6 .
-docker run --env-file .env -p 5050:5000 flaskproject6
-
-Open:
-http://localhost:5050
-
-## API Endpoints
-/ → Main page
-/health → Check if app + database is working
-/status → Shows database connection + saved count
-/recipes → Basic API route
-
-## Environment Variables
-Create a .env file:
-
-DATABASE_URL=your_database_connection_string
+## How to Use
+1. Open the live link above  
+2. Search for a recipe  
+3. Click "Save Recipe"  
+4. View it in the "Saved Recipes" section  
 
 ## Notes
-.env is not uploaded to GitHub for security
-Each user must create their own .env file
-This project was deployed using Render.
+The application is fully deployed on Render  
+The database is hosted on Supabase  
+No setup is required — simply use the live link  
+
+## Team Members
+Ella McCoy 124307196  
+Maggie O'Brien 124307173  
+Seán Harrington 124416512  
+Mia Cronin 124339831  
+
+Built as part of a group software engineering project.
